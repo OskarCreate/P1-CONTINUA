@@ -17,7 +17,7 @@
         </header>
         <main>
             <div class="card p-4">
-                <form action="Cambio" method="post">
+                <form action="Cambio" method="post" id="cambioForm">
                     <div class="mb-3">
                         <label for="envio" class="form-label">Cantidad a Enviar:</label>
                         <input type="number" id="envio" name="envio" class="form-control" required min="0">
@@ -42,10 +42,24 @@
                             <option value="DOL">Dólares Estadounidenses</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="tipoCambio" class="form-label">Tipo de Operación:</label>
+                        <select id="tipoCambio" name="tipoCambio" class="form-select" required>
+                            <option value="compra">Compra</option>
+                            <option value="venta">Venta</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary w-100">Hacer Cambio</button>
                 </form>
+                <div id="mensajeConfirmacion" class="alert alert-success mt-3 d-none">
+                    <p>¡Tu solicitud ha sido aceptada! Ahora debes dar clic 
+                    <a href="/GenerarBoleta">aquí</a> para dirigirte al apartado de generar boleta.</p>
+                </div>
             </div>
         </main>
+        <footer class="text-center mt-4">
+            <p>&copy; 2025 Casa de Cambio Online. Todos los derechos reservados.</p>
+        </footer>
     </div>
     <script>
         $(document).ready(function () {
@@ -63,7 +77,12 @@
                 }
             }
             
-            $("#envio, #origen, #destino").on("input change", actualizarCambio);
+            $("#envio, #origen, #destino, #tipoCambio").on("input change", actualizarCambio);
+
+            $("#cambioForm").on("submit", function (e) {
+                e.preventDefault();
+                $("#mensajeConfirmacion").removeClass("d-none");
+            });
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
