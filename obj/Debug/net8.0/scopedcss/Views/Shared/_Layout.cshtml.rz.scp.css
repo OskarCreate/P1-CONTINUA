@@ -39,10 +39,11 @@ button.accept-policy[b-98cr4zsomq] {
   line-height: inherit;
 }
 
-footer[b-98cr4zsomq] {
-  position: fixed;
+.footer[b-98cr4zsomq] {
+  position: absolute;
   bottom: 0;
   width: 100%;
-  background: #f8f9fa; /* Color de fondo opcional */
-  padding: 10px 0;
+  white-space: nowrap;
+  line-height: 60px;
 }
+
